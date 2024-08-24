@@ -66,6 +66,7 @@
   background-color: rgba(248, 226, 103, 1) !important;
 }
 
-.call {
+.call,
+.btn-reserver {
   background-color: rgba(0, 82, 72, 1) !important;
 }

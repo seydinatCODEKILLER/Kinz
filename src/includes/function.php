@@ -88,3 +88,9 @@ function getChambreWithId($pdo, $chambreId)
     $stmt->execute([':id' => $chambreId]);
     return $stmt->fetch();
 }
+
+function getThreeFirstchambres($pdo)
+{
+    $stmt = $pdo->query("SELECT * FROM chambre ORDER BY ID_Chambre LIMIT 3");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

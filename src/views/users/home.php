@@ -2,6 +2,11 @@
 $title = "Acccueil - kinz";
 $src = "home";
 require_once 'layout/header.php';
+require_once 'src/includes/database.php';
+require_once 'src/includes/function.php';
+
+$chambres = getThreeFirstchambres($pdo);
+$residences = searchParamsToGetResidences($pdo, $_GET);
 ?>
 <main style="margin-top: 98px;">
     <div class="container-fluid">
@@ -109,7 +114,59 @@ require_once 'layout/header.php';
             </div>
         </div>
         <!-- Partie chambre et suites -->
-        <div class="row"></div>
+        <div class="row mt-5">
+            <?php foreach ($chambres as $k => $chambre): ?>
+                <div class="col-12 col-sm-6 col-lg-4 shadow-sm position-relative p-2 hovera">
+                    <div class="rounded" style="background-image: url(src/uploads/imgChambre/<?= $chambre["image"] ?>);background-size:cover;background-position:center;background-repeat:no-repeat;height:25vh"></div>
+                    <p class="m-0 text-center p-1 bg-warning-subtle rounded mt-3"><?= $chambre["nom_chambre"] ?></p>
+                    <p class="fw-bold mt-3">Caracteristique</p>
+                    <div class="d-flex gap-2 mt-2">
+                        <?php if ($chambre["television"] == "oui"): ?>
+                            <div class="d-flex justify-content-center align-items-center bg-light rounded gap-2 p-1">
+                                <i class="ri-tv-line"></i>
+                                <span>Television</span>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($chambre["comodite"] == "ventiller"): ?>
+                            <div class="d-flex justify-content-center align-items-center bg-light rounded gap-2 p-1">
+                                <i class="ri-water-flash-line"></i>
+                                <span>Ventiller</span>
+                            </div>
+                        <?php else: ?>
+                            <div class="d-flex justify-content-center align-items-center bg-light rounded gap-2 p-1"">
+                                <i class=" ri-fridge-line"></i>
+                                <span>Climatiser</span>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="mt-2">
+                        <span class="fw-bold">Prix:</span>
+                        <span><?= $chambre["prix"] ?>FCFA</span>
+                    </div>
+                    <p class="position-absolute top-0 end-0 text-white p-1 bg-<?php if ($chambre["status"] == 1) {
+                                                                                    echo "success";
+                                                                                } else {
+                                                                                    echo "danger";
+                                                                                } ?>">
+                        <?php if ($chambre["status"] == 1): ?>
+                            Disponible
+                        <?php else: ?>
+                            Rerserver
+                        <?php endif; ?>
+                    </p>
+                    <div>
+                        <span class="fw-bold">Dimension:</span>
+                        <span><?= $chambre["dimension"] ?>(m)</span>
+                    </div>
+                    <a href="index.php?action=detail&id=<?= $chambre["ID_Chambre"] ?>" class="text-decoration-none text-black">
+                        <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+                            <span>Voir details</span>
+                            <i class="ri-arrow-right-circle-line"></i>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
     <div class="container">
         <div class="row">

@@ -14,7 +14,7 @@
     <style>
         @media (min-width: 992px) {
             .menu {
-                margin-left: 300px;
+                margin-left: 150px;
             }
         }
 
@@ -48,7 +48,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css
 <body>
     <header style="position: fixed;top:0;z-index:1000;background-color:white;width:100%">
         <nav class="navbar navbar-expand-lg bg-body-white shadow">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="public/images/logo.svg" alt="" style="height: 70px;">
                 </a>

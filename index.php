@@ -4,6 +4,7 @@ require_once('src/controllers/users/homeController.php');
 require_once('src/controllers/users/contactController.php');
 require_once('src/controllers/users/chambreController.php');
 require_once('src/controllers/users/proposController.php');
+require_once('src/controllers/users/detailsController.php');
 // Ajoutez d'autres contrôleurs ici si nécessaire
 
 try {
@@ -18,6 +19,9 @@ try {
                 break;
             case 'chambre':
                 Chambre();
+                break;
+            case 'detail':
+                detailChambre();
                 break;
             case 'propos':
                 Apropos();
