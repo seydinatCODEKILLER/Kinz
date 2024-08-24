@@ -27,7 +27,7 @@ try {
         }
     } else {
         // Rediriger vers la page d'accueil si aucune action n'est spécifiée
-        homepage();
+        homePage();
     }
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage();
